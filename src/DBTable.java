@@ -104,8 +104,7 @@ public class DBTable {
 		LinkedList<String> list = search(key);		
 		if(list.isEmpty()){
 			long tempFree = free;
-			Row row = new Row();
-			//--------------------------------------------------------------------			
+			Row row = new Row();	
 			row.setKeyField(key);
 			row.setOtherFields(otherFields);
 			
@@ -113,8 +112,6 @@ public class DBTable {
 			if(free == 0){
 				long rowAddr = rows.length();
 				writeRow(rows, rowAddr, row);
-			//	long testAddr = rows.length();
-			//	System.out.println(testAddr);
 				exHash.insert(key, rowAddr);
 			}else{
 				rows.seek(free);
@@ -199,7 +196,6 @@ public class DBTable {
 			rows.close();
 			exHash.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		//close the DBTable. The table should not be used aler it is closed
